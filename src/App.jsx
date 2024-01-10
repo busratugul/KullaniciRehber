@@ -7,11 +7,13 @@ import DetailContact from './components/DetailContact'
 
 function App() {
   return (
-    <Routes>
-      <Route index element={<Home/>} />
-      <Route path="add" element={<AddContact />} />
-      <Route path=":id" element={<DetailContact />} />
-    </Routes>
+    <div className="App shadow rounded">
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="add" element={<AddContact />} />
+        <Route path=":id" element={<DetailContact />} />
+      </Routes>
+    </div>
   )
 }
 

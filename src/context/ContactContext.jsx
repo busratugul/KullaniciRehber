@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const ContactContext = createContext()
@@ -12,6 +12,8 @@ export const ContactProvider = ({ children }) => {
   const [edit, setEdit] = useState(false)
   //console.log(contactList)
   //console.log(edit)
+
+  const inputRef = useRef(null)
 
   //pathler arası yönlendirme
   const navigate = useNavigate()
@@ -33,18 +35,23 @@ export const ContactProvider = ({ children }) => {
     setContactList([...filterList])
   }
 
-  //Yapılan değişikliği kaydetme
-/*   const saveEdit = (id) => {
-    const editedContact = contactList.map((contact) =>
-      contact.id !== id ? editedContact : contact
-    )
-    setContactList([...contactList, { ...editedContact }])
-    localStorage.setItem(
-      'CONTACT',
-      JSON.stringify([...contactList, { ...editedContact }])
-    )
-    setEdit(false)
-  } */
+  //Profil fotosu ekleme arrayi
+  const generateRandomImg = () => {
+    const types = [
+      'Snuggles',
+      'Annie',
+      'Buster',
+      'Mimi',
+      'Rocky',
+      'Peanut',
+      'Oreo',
+      'Samantha',
+      'Chloe',
+      'Lucky',
+    ]
+    //console.log(types);
+    return types[Math.floor(Math.random() * types.length)]
+  }
 
   //CONTEXT API PROPSLARI
   const initialStates = {
@@ -60,7 +67,9 @@ export const ContactProvider = ({ children }) => {
     navigate,
     handleDelete,
     edit,
-    setEdit
+    setEdit,
+    inputRef,
+    generateRandomImg,
   }
   return (
     <ContactContext.Provider value={initialStates}>

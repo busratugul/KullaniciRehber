@@ -18,9 +18,9 @@ function Home() {
   }, [])
 
   return (
-    <div className="container home position-relative rounded shadow ">
+    <div className="container">
       <div className="row">
-        <div className="col-3" onClick={() => setIsOpen(!isOpen)}>
+        <div className="col-3 " onClick={() => setIsOpen(!isOpen)}>
           <button className="icon-btn btns" disabled={contactList.length === 0}>
             <FaThList />
           </button>
@@ -45,11 +45,7 @@ function Home() {
           </button>
         </div>
 
-        {contactList.length !== 0 ? (
-          <ContactList />
-        ) : (
-          <div className="m-5 p-5" style={{ width: '60rem' }}></div>
-        )}
+        {contactList.length !== 0 ? <ContactList /> : ''}
       </div>
       <Footer />
     </div>

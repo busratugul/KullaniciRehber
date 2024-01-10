@@ -4,19 +4,30 @@ import { MdDelete } from 'react-icons/md'
 import { FaUserCog } from 'react-icons/fa'
 
 function ContactList() {
-  const { filtered, filter, setFilter, navigate, handleDelete, params } =
-    useContext(ContactContext)
+  const {
+    filtered,
+    filter,
+    setFilter,
+    navigate,
+    handleDelete,
+    inputRef,
+    generateRandomImg,
+  } = useContext(ContactContext)
+
+  useEffect(() => inputRef.current.focus(), [])
 
   return (
     <div className="container text-center m-auto">
+      {/* search input*/}
       <section className="row">
         <div className="col-12">
           <input
-            className="search-input mx-auto py-1 px-3 mb-3 rounded"
+            className="search-input my-3 py-1 px-3 rounded"
             type="search"
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
             placeholder="&#x1F50E; Bir kullanıcı arayın..."
+            ref={inputRef}
           />
         </div>
 
@@ -25,38 +36,47 @@ function ContactList() {
           <div
             key={one.id}
             onDoubleClick={() => navigate(`${one.id}`)}
-            className="col-12 rounded shadow my-2 contact"
+            className="col-11 m-auto my-2 rounded shadow contact"
           >
             <div className="row py-2 align-items-center">
               <div
-                className="rounded-circle bg-light col-1 m-auto"
+                className=" col-1 m-auto text-center"
                 style={{ height: '3rem', width: '3rem' }}
               >
-                <img src="" alt="" />
+                {/* profil fotosu ayarlama */}
+                <img
+                  src={`
+        https://api.dicebear.com/7.x/thumbs/svg?seed=${generateRandomImg()}`}
+                  alt="profil"
+                  className="rounded-circle"
+                  style={{ height: '3rem', width: '3rem' }}
+                />
               </div>
 
               <div
-                className="col-6 d-flex align-items-center"
+                className="col-7 d-flex align-items-center"
                 style={{ justifyContent: 'space-between' }}
               >
-                <div className="col-6 text-end d-flex">
-                  <p className="ms-2">
+                <div className="col-6 text-start d-flex">
+                  <p className="ms-2 pt-2">
                     {one.firstname} {one.lastname}
                   </p>
                 </div>
                 <div className="col-6 text-end">
-                  <p>{one.phone_number}</p>
+                  <p className="pt-2">{one.phone_number}</p>
                 </div>
               </div>
-              <div className="col-4 m-auto text-end">
+              {/* sil butonu */}
+              <div className="col-3 m-auto text-end">
                 <button
-                  className="btns fs-4 col-sm-2"
+                  className="btns fs-4 col-4 pe-4 me-1"
                   onClick={() => handleDelete(one.id)}
                 >
                   <MdDelete />
                 </button>
+                {/* Detay butonu */}
                 <button
-                  className="btns fs-4 col-sm-2 ms-4"
+                  className="btns fs-4 col-4"
                   onClick={() => navigate(`${one.id}`)}
                 >
                   <FaUserCog />

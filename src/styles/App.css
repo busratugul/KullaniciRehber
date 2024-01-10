@@ -1,3 +1,5 @@
+/* Genel css */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
 
 :root {
@@ -5,8 +7,9 @@
   --middle_dark: #61677a;
   --middle_ligth: #d8d9da;
   --most__ligth: #eaeaea;
-  --hover_color: #00abb3;
+  --hover_color: #146c94;
   --border_color: #c0eef2;
+  --error_color: #e43f5a;
   font-size: 16px;
 }
 
@@ -20,7 +23,7 @@
 body {
   min-width: 100vw;
   min-height: 100vh;
-  background: linear-gradient(to top, #eaeaea, #b2b2b2, #8cd6db);
+  background: linear-gradient(to top, #1b1b2f, #162447, #1f4068);
   color: var(--most__ligth);
   display: flex;
   justify-content: center;
@@ -28,60 +31,36 @@ body {
   overflow: auto;
   margin: 0;
 }
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   body {
+    width: 10rem;
     font-size: 14px;
+  }
+  .title {
+    font-size: 16px;
   }
 }
 
-.home,
-.form,
-.detail {
-  height: 100%;
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  .App {
+    width: 50rem;
+  }
+}
+
+.App {
   background-color: var(--most_dark);
-  min-height: 25rem;
   padding: 1.5rem 1rem;
+  min-width: 30rem;
+  min-height: 30rem;
   position: relative;
 }
 
-.footer {
-  position: sticky;
-  background: var(--most_dark);
-  height: 3rem;
-  text-align: center;
-}
-
-.form input,
-.form textarea,
-.form select {
-  background-color: var(--most_dark);
-  outline: none;
-  border: none;
-  border-bottom: 1px solid var(--border_color);
-  color: var(--most__ligth);
-  margin: 0.6rem 0;
-  padding-left: 1rem;
-}
-
-.form input::placeholder,
-.form textarea::placeholder,
-.form select::placeholder,
-.form select {
-  font-size: 14px;
-  color: var(--most__ligth);
-}
-
-.contact {
-  cursor: pointer;
-  background-color: var(--middle_dark);
-  transition: 0.3s all ease;
-}
-
-.contact:hover {
-  /*  background-color: #5e9194; */
-  background-color: #353840;
-
-  transform: scale(0.98);
+img {
+  vertical-align: middle;
+  object-fit: contain;
 }
 
 .title {
@@ -98,11 +77,6 @@ body {
   outline: none;
 }
 
-.icon-btn {
-  width: 100%;
-  font-size: 1.4rem;
-}
-
 .btns:not(:disabled):hover {
   color: var(--hover_color);
   transform: scale(0.98);
@@ -113,12 +87,51 @@ body {
   transition: none;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  width: 100%;
+  list-style: none;
+  padding: 0.5rem 2rem;
+  transition: 0.3s all ease;
+}
+
+li:hover {
+  background-color: var(--hover_color);
+}
+
+.error {
+  text-align: center;
+  color: var(--error_color);
+  display: block;
+  font-size: 10px;
+}
+
+/* List stilleri */
+
+.contact {
+  cursor: pointer;
+  background-color: var(--middle_dark);
+  transition: 0.3s all ease;
+  margin-bottom: 1rem;
+}
+
+.contact:hover {
+  background-color: #353840;
+  transform: scale(0.98);
+}
+
+.icon-btn {
+  width: 100%;
+  font-size: 1.4rem;
+}
+
 .dropdown-icon {
   position: absolute;
   text-align: left;
-  top: 3.5rem;
-  left: 5rem;
-  padding-right: 2.5rem;
   background-color: var(--most_dark);
   border: 1px solid var(--border_color);
   color: var(--most__ligth);
@@ -126,6 +139,19 @@ body {
   z-index: 2;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .dropdown-icon {
+    top: 3.5rem;
+    left:4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .dropdown-icon {
+    left: 6rem;
+  }
+} 
 
 .overlay {
   position: absolute;
@@ -135,12 +161,6 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
-}
-
-li {
-  list-style: none;
-  padding: 0.5rem 0;
-  margin-left: -1rem;
 }
 
 .search-input {
@@ -162,4 +182,62 @@ li {
 .search-input::placeholder {
   letter-spacing: 0.1rem;
   font-size: 12px;
+}
+
+/* Form stilleri */
+
+.form input,
+.form textarea,
+.form select {
+  background-color: var(--most_dark);
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border_color);
+  color: var(--most__ligth);
+  margin: 1.2rem 0;
+  padding-left: 1rem;
+}
+
+.form input::placeholder,
+.form textarea::placeholder,
+.form select::placeholder,
+.form select {
+  font-size: 14px;
+  color: var(--most__ligth);
+}
+
+/* edit formu stilleri */
+.edited {
+  display: flex;
+  flex-direction: column;
+}
+
+.edited input,
+.edited textarea,
+.edited select {
+  width: 30%;
+  background-color: var(--most_dark);
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border_color);
+  color: var(--most__ligth);
+  padding-left: 1rem;
+}
+
+.edited input::placeholder,
+.edited textarea::placeholder,
+.edited select::placeholder,
+.edited select {
+  color: var(--most__ligth);
+}
+
+/* footer stil */
+.footer {
+  font-size: 14px;
+  position: sticky;
+  bottom: 0;
+  background-color: var(--most_dark);
+  height: 4rem;
+  padding: 1rem;
+  text-align: center;
 }

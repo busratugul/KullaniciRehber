@@ -1,4 +1,4 @@
-//Add componenti.Kullanıcı ekleme işlemi yapacağız. Form kullanılacak.
+
 
 import React, { useContext, useEffect } from 'react'
 import { ContactContext } from '../context/ContactContext'
@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import contactSchema from './Schema'
 
 function AddContact() {
-  const { contactList, setContactList, navigate } =
+  const { contactList, setContactList, navigate, inputRef} =
     useContext(ContactContext)
 
   //formik yapısı ile kullanıcıdan bilgileri alma
@@ -33,6 +33,7 @@ function AddContact() {
   
 //storegaya veri ekleme işlemi 
  useEffect(() => {
+    inputRef.current.focus()
     localStorage.setItem('CONTACT', JSON.stringify(contactList))
   }, [contactList])
 
@@ -51,6 +52,7 @@ function AddContact() {
           onChange={handleChange}
           className="col-8 rounded"
           onBlur={handleBlur}
+          ref={inputRef}
         />
         {errors.firstname && touched.firstname && (
             <div className="error">{errors.firstname}</div>
