@@ -4,14 +4,14 @@ import React, { useContext, useEffect } from 'react'
 import { ContactContext } from '../context/ContactContext'
 import { useFormik } from 'formik'
 import { v4 as uuidv4 } from 'uuid'
-import { contactSchema } from './Schema'
+import contactSchema from './Schema'
 
 function AddContact() {
   const { contactList, setContactList, navigate } =
     useContext(ContactContext)
 
   //formik yapısı ile kullanıcıdan bilgileri alma
-  const { values, handleChange, handleSubmit, isSubmitting } = useFormik({
+  const { values, handleChange, handleSubmit,handleBlur, isSubmitting, validationSchema, errors, touched } = useFormik({
     initialValues: {
       firstname: '',
       lastname: '',
@@ -50,7 +50,11 @@ function AddContact() {
           disabled={isSubmitting}
           onChange={handleChange}
           className="col-8 rounded"
+          onBlur={handleBlur}
         />
+        {errors.firstname && touched.firstname && (
+            <div className="error">{errors.firstname}</div>
+          )}
         <input
           name="lastname"
           placeholder="Soyad"
@@ -67,7 +71,11 @@ function AddContact() {
           disabled={isSubmitting}
           onChange={handleChange}
           className="col-8 rounded"
-        />
+          onBlur={handleBlur}
+          />
+          {errors.phone_number && touched.phone_number && (
+            <div className="error">{errors.phone_number}</div>
+          )}
         <input
           name="company"
           placeholder="Şirket"

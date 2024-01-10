@@ -2,7 +2,7 @@ import React from 'react'
 import AddContact from './form/AddContact'
 import Home from './components/Home'
 import { Route, Routes } from 'react-router-dom'
-import './App.css'
+import './styles/App.css'
 import DetailContact from './components/DetailContact'
 
 function App() {

@@ -1,11 +1,9 @@
-import {object, string, number} from 'yup'
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+import * as yup from 'yup'
 
-export const contactSchema = object({
-    firstname: string().required(),
-    lastname: string(),
-    phone_number: number().required().positive().integer().min(8).typeError(),
-    company: string(),
-    group: string()
-})
+const contactSchema = yup.object({
+    firstname:yup.string().required('İsim girmek zorunludur!'),
+    phone_number: yup.number().positive("Lütfen geçerli bir numara giriniz!").required('Telefon numarası girmek zorunludur!').min(8, "Lütfen geçerli bir telefon numarası giriniz!").integer("Telefon numarası sadece sayılardan oluşmalıdır").typeError("Telefon numarası sayılardan oluşmalıdır!"),
+})  
 
+
+export default contactSchema

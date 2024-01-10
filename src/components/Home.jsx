@@ -48,14 +48,10 @@ function Home() {
         {contactList.length !== 0 ? (
           <ContactList />
         ) : (
-          <div className="text-center my-5">
-            <h4 className="text-white-50">
-              Görüntülenecek kişi mevcut değil !
-            </h4>
-          </div>
+          <div className="m-5 p-5" style={{ width: '60rem' }}></div>
         )}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   )
 }

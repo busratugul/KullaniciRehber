@@ -1,5 +1,5 @@
-import React, { createContext, useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { createContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const ContactContext = createContext()
 
@@ -11,37 +11,42 @@ export const ContactProvider = ({ children }) => {
   const [group, setGroup] = useState('')
   const [edit, setEdit] = useState(false)
   //console.log(contactList)
+  //console.log(edit)
 
   //pathler arası yönlendirme
   const navigate = useNavigate()
 
-  //id alma
-  const params = useParams()
-
   //Search inputu ile filtreleme
   const filtered = contactList.filter((contact) => {
-    return Object.keys(contact).some((key) =>
-      contact[key].toString().toLowerCase().includes(filter.toLowerCase())
-    ) && ( group === '' ? contact.group !== group : contact.group === group)
+    return (
+      Object.keys(contact).some((key) =>
+        contact[key].toString().toLowerCase().includes(filter.toLowerCase())
+      ) && (group === '' ? contact.group !== group : contact.group === group)
+    )
   })
 
+  //Listeden contact silme
   const handleDelete = (id) => {
     const filterList = contactList.filter((contact) => contact.id !== id)
-    localStorage.setItem("CONTACT",JSON.stringify(filterList))
+    localStorage.setItem('CONTACT', JSON.stringify(filterList))
     //console.log(filterList)
     setContactList([...filterList])
   }
 
-  const saveEdit = () => {
-    const editList = contactList.filter((contact) => contact.id !== id)
-    localStorage.setItem("CONTACT",JSON.stringify(editList))
-    setContactList([...editList])
-  }
+  //Yapılan değişikliği kaydetme
+/*   const saveEdit = (id) => {
+    const editedContact = contactList.map((contact) =>
+      contact.id !== id ? editedContact : contact
+    )
+    setContactList([...contactList, { ...editedContact }])
+    localStorage.setItem(
+      'CONTACT',
+      JSON.stringify([...contactList, { ...editedContact }])
+    )
+    setEdit(false)
+  } */
 
-  useEffect(() => {
-    console.log('context render')
-  }, [])
-
+  //CONTEXT API PROPSLARI
   const initialStates = {
     contactList,
     setContactList,
@@ -54,8 +59,8 @@ export const ContactProvider = ({ children }) => {
     setGroup,
     navigate,
     handleDelete,
-    setEdit,
-    params
+    edit,
+    setEdit
   }
   return (
     <ContactContext.Provider value={initialStates}>

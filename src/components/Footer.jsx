@@ -3,7 +3,7 @@ import { ContactContext } from '../context/ContactContext'
 
 function Footer() {
   const { filtered } = useContext(ContactContext)
-  return <footer className="container footer">{filtered.length} Kişi Mevcut <br />
+  return <footer className="container footer align-self-end">{filtered.length} Kişi Mevcut <br />
   <small>created by Busra Tugul © 2024 </small></footer>
 }
 
