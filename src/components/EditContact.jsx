@@ -45,7 +45,7 @@ function EditContact({ edited, icon }) {
       <div className="col-12">
         <h1>
           <input
-            placeholder="Ad"
+            placeholder="İsim"
             value={values.firstname}
             name="firstname"
             onChange={handleChange}
@@ -56,7 +56,7 @@ function EditContact({ edited, icon }) {
             <small className="error">{errors.firstname}</small>
           )}
           <input
-            placeholder="Soyad"
+            placeholder="Soyisim"
             value={values.lastname}
             name="lastname"
             onChange={handleChange}
