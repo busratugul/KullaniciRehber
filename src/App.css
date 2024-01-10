@@ -1,1 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
 
+:root {
+  --most_dark: #272829;
+  --middle_dark: #61677a;
+  --middle_ligth: #d8d9da;
+  --most__ligth: #eaeaea;
+  --hover_color: #00abb3;
+  --border_color: #c0eef2;
+  font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(to top, #eaeaea, #b2b2b2, #8cd6db);
+  color: var(--most__ligth);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+.home,
+.form,
+.detail {
+  height: 100%;
+  background-color: var(--most_dark);
+  min-height: 25rem;
+  padding: 1.5rem 1rem;
+  position: relative;
+}
+
+.footer {
+  position: sticky;
+  background: var(--most_dark);
+  height: 3rem;
+  text-align: center;
+}
+
+.form input,
+.form textarea,
+.form select {
+  background-color: var(--most_dark);
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border_color);
+  color: var(--most__ligth);
+  margin: 0.6rem 0;
+  padding-left: 1rem;
+}
+
+.form input::placeholder,
+.form textarea::placeholder,
+.form select::placeholder,
+.form select {
+  font-size: 14px;
+  color: var(--most__ligth);
+}
+
+.contact {
+  cursor: pointer;
+  background-color: var(--middle_dark);
+  transition: 0.3s all ease;
+}
+
+.contact:hover {
+  /*  background-color: #5e9194; */
+  background-color: #353840;
+
+  transform: scale(0.98);
+}
+
+.title {
+  letter-spacing: 0.1rem;
+  text-shadow: 0 0 3px rgba(227, 224, 224, 0.8);
+}
+
+.btns {
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--middle_ligth);
+  transition: 0.3s all ease;
+  border: none;
+  outline: none;
+}
+
+.icon-btn {
+  width: 100%;
+  font-size: 1.4rem;
+}
+
+.btns:not(:disabled):hover {
+  color: var(--hover_color);
+  transform: scale(0.98);
+}
+
+.btns:disabled {
+  opacity: 0.8;
+  transition: none;
+}
+
+.dropdown-icon {
+  position: absolute;
+  text-align: left;
+  top: 3.5rem;
+  left: 5rem;
+  padding-right: 2.5rem;
+  background-color: var(--most_dark);
+  border: 1px solid var(--border_color);
+  color: var(--most__ligth);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+li {
+  list-style: none;
+  padding: 0.5rem 0;
+  margin-left: -1rem;
+}
+
+.search-input {
+  width: 25rem;
+  border: 2px solid var(--most__ligth);
+  transition: 0.3s all ease;
+  color: var(--most_dark);
+}
+
+.search-input:hover {
+  transform: scale(0.98);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--hover_color);
+}
+
+.search-input::placeholder {
+  letter-spacing: 0.1rem;
+  font-size: 12px;
+}
