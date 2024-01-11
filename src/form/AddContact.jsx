@@ -25,7 +25,7 @@ function AddContact() {
       company: '',
       phone_number: '',
       address: '',
-      group: 'Genel',
+      group: 'Bir grup belirleyin.',
     },
     onSubmit: (values, bag) => {
       //yeni kişi ekleme
