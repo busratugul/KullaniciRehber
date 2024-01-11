@@ -1,5 +1,3 @@
-
-
 import React, { useContext, useEffect } from 'react'
 import { ContactContext } from '../context/ContactContext'
 import { useFormik } from 'formik'
@@ -7,18 +5,27 @@ import { v4 as uuidv4 } from 'uuid'
 import contactSchema from './Schema'
 
 function AddContact() {
-  const { contactList, setContactList, navigate, inputRef} =
+  const { contactList, setContactList, navigate, inputRef } =
     useContext(ContactContext)
 
   //formik yapısı ile kullanıcıdan bilgileri alma
-  const { values, handleChange, handleSubmit,handleBlur, isSubmitting, validationSchema, errors, touched } = useFormik({
+  const {
+    values,
+    handleChange,
+    handleSubmit,
+    handleBlur,
+    isSubmitting,
+    validationSchema,
+    errors,
+    touched,
+  } = useFormik({
     initialValues: {
       firstname: '',
       lastname: '',
       company: '',
       phone_number: '',
       address: '',
-      group: 'boş',
+      group: 'Genel',
     },
     onSubmit: (values, bag) => {
       //yeni kişi ekleme
@@ -30,9 +37,9 @@ function AddContact() {
     },
     validationSchema: contactSchema,
   })
-  
-//storegaya veri ekleme işlemi 
- useEffect(() => {
+
+  //storegaya veri ekleme işlemi
+  useEffect(() => {
     inputRef.current.focus()
     localStorage.setItem('CONTACT', JSON.stringify(contactList))
   }, [contactList])
@@ -55,8 +62,8 @@ function AddContact() {
           ref={inputRef}
         />
         {errors.firstname && touched.firstname && (
-            <div className="error">{errors.firstname}</div>
-          )}
+          <div className="error">{errors.firstname}</div>
+        )}
         <input
           name="lastname"
           placeholder="Soyisim"
@@ -74,10 +81,10 @@ function AddContact() {
           onChange={handleChange}
           className="col-8 rounded"
           onBlur={handleBlur}
-          />
-          {errors.phone_number && touched.phone_number && (
-            <div className="error">{errors.phone_number}</div>
-          )}
+        />
+        {errors.phone_number && touched.phone_number && (
+          <div className="error">{errors.phone_number}</div>
+        )}
         <input
           name="company"
           placeholder="Şirket"
@@ -103,7 +110,7 @@ function AddContact() {
           disabled={isSubmitting}
           className="col-8 rounded"
         >
-          <option value="Genel">Bir grup belirleyin</option>
+          <option value="">Bir grup belirleyin</option>
           <option value="Aile">Aile</option>
           <option value="Arkadaşlar">Arkadaşlar</option>
           <option value="İş Arkadaşları">İş Arkadaşları</option>
