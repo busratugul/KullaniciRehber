@@ -1,13 +1,13 @@
 # KULLANICI REHBERİ - ECODATION
 
-Bu projede benden istebildiği şekilde;
-- Kullanıcı kişi listesi sayfası ile uygulamaya giriş yapıyor.
+Bu projede benden istenildiği şekilde;
+- Kullanıcı kişi listesi sayfası ile uygulamaya giriş yapar.
 - Sağ artı ikonu yeni kişi ekleme formu açılmaktadır.
 - Kullanıcı dilediği bilgilerle adres, şirket vb. yeni kişiyi doldurabilir ancak isim ve telefon numarası girmesi zorunludur.
-- Sol menü ikonu ile filtrelemelerini tercih edebilir. Aile, arkadaş vs. olarak gruplandırabiliyor.
-- Listelenen kişileri direkt listeden silebiliyor.
-- Kişiye liste üzerinde iki kere tıklayınca ya da detay ikonu ile de kişinin kişisel tüm bilgilerini görüntüleyebildiği detay sayfasına yönlendiriliyor.
-- Detayları fdüzenlemek istemezse geri ikonu ile de listeye dönebilir.
+- Sol menü ikonu ile filtrelemelerini tercih edebilir. Aile, arkadaş vs. olarak gruplandırabilir.
+- Listelenen kişileri direkt listeden silebilir.
+- Kişiye liste üzerinde iki kere tıklayınca ya da detay ikonu ile de kişinin kişisel tüm bilgilerini görüntüleyebildiği detay sayfasına yönlendirilir.
+- Detayları düzenlemek istemezse geri ikonu ile de listeye dönebilir.
 - Kullanıcı bu sayfada da sol edit ikonu ile kişi bilgilerini düzenleyip kaydedebilir ya da düzenlemeyi iptal edebilir.
 - Listenin en altında sticky olarak sabit şekilde duran kişi sayısı görüntülenmektedir.
 - Tasarımı da kullanışlı ve okunaklı şekilde yapmaya çalıştım, responsive olması sayesinde her ekrana uyum sağlayacaktır.
