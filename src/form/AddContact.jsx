@@ -53,7 +53,7 @@ function AddContact() {
         <header className="title text-center">Yeni Kişi</header>
         <input
           name="firstname"
-          placeholder="İsim"
+          placeholder="Ad"
           value={values.firstname}
           disabled={isSubmitting}
           onChange={handleChange}
@@ -66,7 +66,7 @@ function AddContact() {
         )}
         <input
           name="lastname"
-          placeholder="Soyisim"
+          placeholder="Soyad"
           value={values.lastname}
           disabled={isSubmitting}
           onChange={handleChange}
